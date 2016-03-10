@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GALAModels", "GALAModels\GALAModels.vbproj", "{7B49E682-E58B-44F1-930F-C35CDE6ECF73}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GalaWCF", "GalaWCF\", "{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{7b49e682-e58b-44f1-930f-c35cde6ecf73}|GALAModels.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49920"
+		Debug.AspNetCompiler.PhysicalPath = "GalaWCF\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49920\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49920"
+		Release.AspNetCompiler.PhysicalPath = "GalaWCF\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49920\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49920"
+		SlnRelativePath = "GalaWCF\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B49E682-E58B-44F1-930F-C35CDE6ECF73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B49E682-E58B-44F1-930F-C35CDE6ECF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B49E682-E58B-44F1-930F-C35CDE6ECF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B49E682-E58B-44F1-930F-C35CDE6ECF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

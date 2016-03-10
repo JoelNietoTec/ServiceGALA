@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Clients_ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" />
+          <Property Name="NombreFact" Type="nvarchar" MaxLength="150" />
+          <Property Name="DireccionCobro" Type="nvarchar" MaxLength="150" />
+          <Property Name="DireccionEnviar" Type="nvarchar" MaxLength="150" />
+          <Property Name="CodPais" Type="nvarchar" MaxLength="4" />
+          <Property Name="Ter" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="30" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="30" />
+          <Property Name="CodEmpleado" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="FechaApertura" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="CodGrupo" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ClasificacionIndustria" Type="nvarchar" MaxLength="2" />
+          <Property Name="Observaciones" Type="ntext" />
+          <Property Name="CodClase" Type="nvarchar" MaxLength="2" />
+          <Property Name="FechaModificacion" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="Clients_ServiceModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Clients_ServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="NombreFact" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DireccionCobro" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DireccionEnviar" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CodPais" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Ter" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CodEmpleado" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="FechaApertura" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CodGrupo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ClasificacionIndustria" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CodClase" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="GALA_ServiceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Clients_ServiceModelStoreContainer" CdmEntityContainer="GALA_ServiceEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="Clients_ServiceModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NombreFact" ColumnName="NombreFact" />
+                <ScalarProperty Name="DireccionCobro" ColumnName="DireccionCobro" />
+                <ScalarProperty Name="DireccionEnviar" ColumnName="DireccionEnviar" />
+                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+                <ScalarProperty Name="Ter" ColumnName="Ter" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
+                <ScalarProperty Name="ClasificacionIndustria" ColumnName="ClasificacionIndustria" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="CodClase" ColumnName="CodClase" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

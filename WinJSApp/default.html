@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="clientBrowser">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
@@ -12,7 +12,7 @@
     <script src="lib/Bootstrap/js/bootstrap.min.js"></script>
 
     <!--Referencias Angular-->
-    <script src="lib/AngularJS/angular.min.js"></script>
+    <script src="lib/AngularJS/angular.js"></script>
     <script src="lib/AngularJS/angular-animate.min.js"></script>
     <script src="lib/AngularJS/angular-route.min.js"></script>
 
@@ -24,8 +24,13 @@
     <!-- Referencias de WinJSApp -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="js/clients.js"></script>
 </head>
 <body class="win-type-body">
-    <p>Aquí se debe incluir el contenido</p>
+    <div class="win-container" ng-controller="clientList">
+        <div ng-repeat="client in clients">
+            <h1 class="win-h1">{{client.Nombre}}</h1>
+        </div>  
+    </div>
 </body>
 </html>

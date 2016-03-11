@@ -12,7 +12,7 @@ Public Class GALAService
 
             For Each c In contexto.Clientes
                 Dim cData As ClientsData = New ClientsData()
-
+                cData.IdCliente = c.IdCliente
                 cData.Nombre = c.Nombre
                 cData.NombreFact = c.NombreFact
                 cData.DireccionCobro = c.DireccionCobro

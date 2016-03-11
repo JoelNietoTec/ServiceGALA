@@ -71,6 +71,7 @@
     <Content Include="images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="images\StoreLogo.png" />
     <Content Include="images\Wide310x150Logo.scale-200.png" />
+    <Content Include="js\clients.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <Content Include="lib\AngularJS\angular-animate.js" />
@@ -112,7 +113,9 @@
     <Content Include="lib\WinJS\js\WinJS.intellisense.js" />
     <Content Include="lib\WinJS\License.txt" />
     <Content Include="lib\WinJS\README.md" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="WinJSApp_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />

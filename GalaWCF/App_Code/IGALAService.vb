@@ -1,7 +1,7 @@
 ﻿<ServiceContract()>
 Public Interface IGALAService
     <OperationContract()>
-    <WebGet(UriTemplate:="/GetAllClients", RequestFormat:=WebMessageFormat.Json, ResponseFormat:=WebMessageFormat.Json)>
+    <WebGet(UriTemplate:="/GetAllClients", RequestFormat:=WebMessageFormat.Json, ResponseFormat:=WebMessageFormat.Json, BodyStyle:=WebMessageBodyStyle.Wrapped)>
     Function GetAllClients() As List(Of ClientsData)
 
 
@@ -9,6 +9,9 @@ End Interface
 
 <DataContract()>
 Public Class ClientsData
+    <Key()>
+    <DataMember()>
+    Public Property IdCliente As Integer
     <DataMember()>
     Public Property Nombre() As String
     <DataMember()>

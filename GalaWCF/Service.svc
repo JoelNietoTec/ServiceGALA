@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="VB" Debug="true" Service="GalaService" CodeBehind="~/App_Code/Service.vb" %>
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="GALAService" CodeBehind="~/App_Code/GALAService.vb" %>

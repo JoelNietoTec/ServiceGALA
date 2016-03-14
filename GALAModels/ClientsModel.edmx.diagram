@@ -6,6 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d3880bbab8274918a455d743bd664cfd" Name="Diagram1">
         <EntityTypeShape EntityType="Clients_ServiceModel.Cliente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Clients_ServiceModel.Empleado" Width="1.5" PointX="8.25" PointY="5.75" />
+        <EntityTypeShape EntityType="Clients_ServiceModel.Pais" Width="1.5" PointX="7.875" PointY="1.375" />
+        <AssociationConnector Association="Clients_ServiceModel.FK_Clientes_Empleados" />
+        <AssociationConnector Association="Clients_ServiceModel.FK_Clientes_Paises" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

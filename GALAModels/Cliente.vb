@@ -29,4 +29,7 @@ Partial Public Class Cliente
     Public Property CodClase As String
     Public Property FechaModificacion As Nullable(Of Date)
 
+    Public Overridable Property Empleado As Empleado
+    Public Overridable Property Pais As Pais
+
 End Class

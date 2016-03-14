@@ -30,11 +30,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GalaWCF", "GalaWCF\", "{6D1
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "WinJSApp", "WinJSApp\WinJSApp.jsproj", "{900037A9-EB23-41E7-A237-6F452A235343}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBUniversalApp", "VBUniversalApp\VBUniversalApp.vbproj", "{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6D1B5361-008E-4A11-BCB7-3BF1F0021DA5} = {6D1B5361-008E-4A11-BCB7-3BF1F0021DA5}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,26 +98,6 @@ Global
 		{900037A9-EB23-41E7-A237-6F452A235343}.Release|x86.ActiveCfg = Release|x86
 		{900037A9-EB23-41E7-A237-6F452A235343}.Release|x86.Build.0 = Release|x86
 		{900037A9-EB23-41E7-A237-6F452A235343}.Release|x86.Deploy.0 = Release|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|ARM.ActiveCfg = Debug|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|ARM.Build.0 = Debug|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|ARM.Deploy.0 = Debug|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x64.ActiveCfg = Debug|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x64.Build.0 = Debug|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x64.Deploy.0 = Debug|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x86.ActiveCfg = Debug|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x86.Build.0 = Debug|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Debug|x86.Deploy.0 = Debug|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|Any CPU.ActiveCfg = Release|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|ARM.ActiveCfg = Release|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|ARM.Build.0 = Release|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|ARM.Deploy.0 = Release|ARM
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x64.ActiveCfg = Release|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x64.Build.0 = Release|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x64.Deploy.0 = Release|x64
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x86.ActiveCfg = Release|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x86.Build.0 = Release|x86
-		{DD8C6DF2-DCC0-4A9C-A2DA-A2713233D0ED}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

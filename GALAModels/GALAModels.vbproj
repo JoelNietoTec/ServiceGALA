@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Empleado.vb">
+      <DependentUpon>ClientsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -104,6 +107,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pais.vb">
+      <DependentUpon>ClientsModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -118,7 +124,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClientsModel.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClientsModel.edmx.diagram">
       <DependentUpon>ClientsModel.edmx</DependentUpon>
     </None>

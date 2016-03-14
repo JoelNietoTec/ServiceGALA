@@ -23,5 +23,7 @@ Partial Public Class GALA_ServiceEntities
     End Sub
 
     Public Property Clientes() As DbSet(Of Cliente)
+    Public Property Empleados() As DbSet(Of Empleado)
+    Public Property Paises() As DbSet(Of Pais)
 
 End Class

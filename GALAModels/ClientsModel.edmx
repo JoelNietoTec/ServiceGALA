@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Clients_ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Clients_ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="IdCliente" />
@@ -27,11 +27,64 @@
           <Property Name="CodClase" Type="nvarchar" MaxLength="2" />
           <Property Name="FechaModificacion" Type="datetime" />
         </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="CodEmpleado" />
+          </Key>
+          <Property Name="CodEmpleado" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="NombreEmpleado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cargo" Type="nvarchar" MaxLength="1" />
+          <Property Name="FechaAdicion" Type="datetime" />
+          <Property Name="FechaInicio" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="40" />
+          <Property Name="CodArea" Type="nvarchar" MaxLength="2" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="Continente" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Clientes_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="CodEmpleado" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="CodEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Clients_ServiceModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Clientes_Empleados" Association="Self.FK_Clientes_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Paises" Association="Self.FK_Clientes_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Clients_ServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -56,42 +109,121 @@
           <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CodClase" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="Clients_ServiceModel.FK_Clientes_Empleados" FromRole="Cliente" ToRole="Empleado" />
+          <NavigationProperty Name="Pais" Relationship="Clients_ServiceModel.FK_Clientes_Paises" FromRole="Cliente" ToRole="Pais" />
         </EntityType>
         <EntityContainer Name="GALA_ServiceEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Clientes" EntityType="Clients_ServiceModel.Cliente" />
+          <EntitySet Name="Empleados" EntityType="Clients_ServiceModel.Empleado" />
+          <EntitySet Name="Paises" EntityType="Clients_ServiceModel.Pais" />
+          <AssociationSet Name="FK_Clientes_Empleados" Association="Clients_ServiceModel.FK_Clientes_Empleados">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Paises" Association="Clients_ServiceModel.FK_Clientes_Paises">
+            <End Role="Pais" EntitySet="Paises" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="CodEmpleado" />
+          </Key>
+          <Property Name="CodEmpleado" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+          <Property Name="NombreEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cargo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAdicion" Type="DateTime" Precision="3" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Clientes" Relationship="Clients_ServiceModel.FK_Clientes_Empleados" FromRole="Empleado" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CodArea" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Continente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clientes" Relationship="Clients_ServiceModel.FK_Clientes_Paises" FromRole="Pais" ToRole="Cliente" />
+        </EntityType>
+        <Association Name="FK_Clientes_Empleados">
+          <End Type="Clients_ServiceModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="Clients_ServiceModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="CodEmpleado" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="CodEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Paises">
+          <End Type="Clients_ServiceModel.Pais" Role="Pais" Multiplicity="0..1" />
+          <End Type="Clients_ServiceModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Clients_ServiceModelStoreContainer" CdmEntityContainer="GALA_ServiceEntities">
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="Clients_ServiceModel.Cliente">
-              <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="NombreFact" ColumnName="NombreFact" />
-                <ScalarProperty Name="DireccionCobro" ColumnName="DireccionCobro" />
-                <ScalarProperty Name="DireccionEnviar" ColumnName="DireccionEnviar" />
-                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
-                <ScalarProperty Name="Ter" ColumnName="Ter" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Clients_ServiceModelStoreContainer" CdmEntityContainer="GALA_ServiceEntities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="IsTypeOf(Clients_ServiceModel.Cliente)">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NombreFact" ColumnName="NombreFact" />
+          <ScalarProperty Name="DireccionCobro" ColumnName="DireccionCobro" />
+          <ScalarProperty Name="DireccionEnviar" ColumnName="DireccionEnviar" />
+          <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+          <ScalarProperty Name="Ter" ColumnName="Ter" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
+          <ScalarProperty Name="ClasificacionIndustria" ColumnName="ClasificacionIndustria" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CodClase" ColumnName="CodClase" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="Clients_ServiceModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaAdicion" ColumnName="FechaAdicion" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="NombreEmpleado" ColumnName="NombreEmpleado" />
                 <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
-                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
-                <ScalarProperty Name="ClasificacionIndustria" ColumnName="ClasificacionIndustria" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="CodClase" ColumnName="CodClase" />
-                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="Clients_ServiceModel.Pais">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="Continente" ColumnName="Continente" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="CodArea" ColumnName="CodArea" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -105,7 +237,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

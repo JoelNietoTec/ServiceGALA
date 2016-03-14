@@ -28,9 +28,16 @@
 </head>
 <body class="win-type-body">
     <div class="win-container" ng-controller="clientList">
-        <div ng-repeat="client in clients">
-            <h1 class="win-h1">{{client.Nombre}}</h1>
-        </div>  
+        <div ng-hide="clients.length <= 0">
+            <div ng-repeat="client in clients">
+                <h4 class="win-h4">{{client.Nombre}}</h4>
+            </div>  
+        </div>
+        <div ng-hide="clients.length > 0">
+            <h3 class="win-h3">Cargando</h3>
+            <progress class="win-ring"></progress>
+        </div>
+        
     </div>
 </body>
 </html>
